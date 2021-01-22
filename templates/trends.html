@@ -20,25 +20,27 @@
             <canvas id="myChart" width="400" height="200"></canvas>
             <script>
                 var ctx = document.getElementById('myChart').getContext('2d');
-                var allData = {{ allData }};
-                console.log("hello");
-                console.log(allData);
-                var selected = {{ selected }};
-                var len = allData[selected].length;
-                var points=[]; var Labels=[];
-                for (var i = 0; i < len; i++){
-                    Labels[i] = allData[selected][i][0];
-                    points[i] = allData[selected][i][1];
-                }
-                console.table(points);
-                console.table(Labels);
+                {#var allData = {{ allData }};#}
+                {#var selected = {{ selected }};#}
+                {#allData = {'MonA': [('9:15am', 5), ('9:30am', 7), ('9:45am', 10), ('10:00am', 8)]};#}
+                {#selected = 'MonA';#}
+                {#console.log("hello");#}
+                {#console.log(allData);#}
+                {#var len = allData[selected].length;#}
+                {#var points=[]; var Labels=[];#}
+                {#for (var i = 0; i < len; i++){#}
+                {#    Labels[i] = allData[selected][i][0];#}
+                {#    points[i] = allData[selected][i][1];#}
+                {# } #}
+                {#console.table(points);#}
+                {#console.table(Labels);#}
                 var myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: Labels,
+                        labels: ["9:15am", "9:30am", "9:45am", "10:00am"],
                         datasets: [{
                             label: selected,
-                            data: points,
+                            data: [5, 7, 10, 8],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
