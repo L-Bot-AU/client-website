@@ -1,0 +1,4 @@
+flask~=1.1.2
+flask_bootstrap
+requests~=2.25.0
+bokeh~=2.2.1
