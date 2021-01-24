@@ -11,67 +11,27 @@
 
 {% block page_content %}
     Trends!<br>
-    Include table of cycle, graph area on right
+    Include table of cycle, graph area on right<br>
 
     <div class="row"> {# is this necessary? #}
 {#    todo: get line graph working#}
-        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <button onclick="displayGraph('All')">All</button>
+            <button onclick="displayGraph('Mon')">Monday</button>
+            <button onclick="displayGraph('Tues')">Tues</button>
+            <button onclick="displayGraph('Wed')">Wed</button>
+            <button onclick="displayGraph('Thurs')">Thurs</button>
+            <button onclick="displayGraph('Fri')">Fri</button>
+        </div>
         <div class="col-lg-6">
             <canvas id="myChart" width="400" height="200"></canvas>
-            <script>
-                var ctx = document.getElementById('myChart').getContext('2d');
-                {#var allData = {{ allData }};#}
-                {#var selected = {{ selected }};#}
-                {#allData = {'MonA': [('9:15am', 5), ('9:30am', 7), ('9:45am', 10), ('10:00am', 8)]};#}
-                {#selected = 'MonA';#}
-                {#console.log("hello");#}
-                {#console.log(allData);#}
-                {#var len = allData[selected].length;#}
-                {#var points=[]; var Labels=[];#}
-                {#for (var i = 0; i < len; i++){#}
-                {#    Labels[i] = allData[selected][i][0];#}
-                {#    points[i] = allData[selected][i][1];#}
-                {# } #}
-                {#console.table(points);#}
-                {#console.table(Labels);#}
-                var myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ["9:15am", "9:30am", "9:45am", "10:00am"],
-                        datasets: [{
-                            label: selected,
-                            data: [5, 7, 10, 8],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)'
-                                {#'rgba(153, 102, 255, 0.2)',#}
-                                {#'rgba(255, 159, 64, 0.2)'#}
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)'
-                                {#'rgba(153, 102, 255, 1)',#}
-                                {#'rgba(255, 159, 64, 1)'#}
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
-                    }
-                });
-            </script>
         </div>
     </div>
 
+    <script src="{{url_for('static', filename='graphs.js')}}"></script>
+    <script>
+        var allData = {{ data | safe }};
+        {#var selected = '{{ Selected | safe }}';#}
+        {#todo: maybe remove selected? #}
+    </script>
 {% endblock %}

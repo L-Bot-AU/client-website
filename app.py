@@ -25,8 +25,10 @@ class RecvDataStub:
 
     def libraryAbout(self):
         return [
-            {"name": "Senior Library", "hours": "9am - 3pm", "current": 20, "capacity": 50},
-            {"name": "Junior Library", "hours": "9am - 3pm", "current": 10, "capacity": 30}
+            {"name": "Senior Library", "hours": "9am - 3pm", "current": 20,
+             "capacity": 50, "minExpected": 20, "maxExpected": 30},
+            {"name": "Junior Library", "hours": "9am - 3pm", "current": 10,
+             "capacity": 30, "minExpected": 10, "maxExpected": 25}
         ]
 
     def stats(self, libraryName, minDay, maxDay, minWeek, maxWeek):
@@ -62,7 +64,7 @@ def trends():
     wk = "A"
     selected = f"{day}{wk}"
     # script, div = graphing.trends(selected, allData[selected])
-    return render_template("trends.html", data=allData, selected=selected)
+    return render_template("trends.html", data=allData, Selected=selected)
 
 
 @app.errorhandler(404)
@@ -74,7 +76,13 @@ def page_not_found(e):
 def pastData():
     #pass as a json
     # return '{"MonA": [("9:15am", 5), ("9:30am", 7), ("9:45am", 10), ("10:00am", 8)]}'
-    return {"MonA": [("9:15am", 5), ("9:30am", 7), ("9:45am", 10), ("10:00am", 8)]}
+    return {"": {"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 0},
+            "Mon": {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
+            "Tues": {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
+            "Wed": {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},
+            "Thurs": {"9:15am": 2, "9:30am": 5, "9:45am": 9, "10:00am": 9},
+            "Fri": {"9:15am": 7, "9:30am": 15, "9:45am": 9, "10:00am": 7},
+            "All": {"9:15am": 12, "9:30am": 7, "9:45am": 3, "10:00am": 8}}
 
 
 @app.route("/<lib>Count")
