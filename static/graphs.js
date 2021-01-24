@@ -1,42 +1,24 @@
-function displayGraph(selected) {
+function displayGraph(update){
+    selected[update] = 1 - selected[update];
     var ctx = document.getElementById('myChart').getContext('2d');
     console.log("graph display updated");
     // console.log(allData);
-    var points = [];
     var time = [];
-    for (const key in allData[selected]) {
+    for (const key in allData[0]) {
         time.push(key);
-        points.push(allData[selected][key]);
     }
-    // console.table(points);
     // console.table(time);
+    var allDatasets = [];
+    for (var i = 0; i < 8; i++){
+        if (selected[i]){
+            allDatasets.push(dataset(i));
+        }
+    }
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: time,
-            datasets: [{
-                label: ["", "Mon", "Tues", "Wed", "Thurs", "Fri", "All"][selected],
-                data: points,
-                backgroundColor: [
-                    'rgba(0, 0, 0, 0)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ][selected],
-                borderColor: [
-                    'rgba(0, 0, 0, 0)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ][selected],
-                borderWidth: 1
-            }]
+            datasets: allDatasets
         },
         options: {
             scales: {
@@ -48,6 +30,38 @@ function displayGraph(selected) {
             }
         }
     });
+}
+
+function dataset(index){
+    var points = [];
+    for (const key in allData[index]) {
+        points.push(allData[index][key]);
+    }
+    // console.table(points);
+    var data = {label: ["", "Mon", "Tues", "Wed", "Thurs", "Fri", "All"][index],
+                data: points,
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                // backgroundColor: [
+                //     'rgba(0, 0, 0, 0)',
+                //     'rgba(255, 99, 132, 0.2)',
+                //     'rgba(54, 162, 235, 0.2)',
+                //     'rgba(255, 206, 86, 0.2)',
+                //     'rgba(75, 192, 192, 0.2)',
+                //     'rgba(153, 102, 255, 0.2)',
+                //     'rgba(255, 159, 64, 0.2)'
+                // ][index],
+                borderColor: [
+                    'rgba(0, 0, 0, 0)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ][index],
+                borderWidth: 3
+            }
+    return data
 }
 
 function ceil(n){

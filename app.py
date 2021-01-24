@@ -71,7 +71,7 @@ def pastData():
     #pass as a json
     # return '{"MonA": [("9:15am", 5), ("9:30am", 7), ("9:45am", 10), ("10:00am", 8)]}'
     #todo: order is [n/a, Mon, Tues, Wed, Thurs, Fri, All]
-    return [{"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 0},
+    return [{"9:15am": 0, "9:30am": 0, "9:45am": 10, "10:00am": 0},
             {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
             {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
             {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},

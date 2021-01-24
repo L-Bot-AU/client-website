@@ -397,8 +397,11 @@ a.navbar-text:hover {
 }
 
 /*todo: make nice colours for buttons*/
-/*.graphSelect {*/
-/*    border: 3px solid var(--txt-primary-col);*/
-/*    background-color: var(--bg-library-col);*/
-/*    color: var(--txt-primary-col);*/
-/*}*/
+.graphSelect {
+    border: 3px solid var(--txt-primary-col);
+    border-radius: 25px;
+    width: inherit;
+    margin-bottom: 10px;
+    background-color: var(--bg-library-col);
+    color: var(--txt-primary-col);
+}

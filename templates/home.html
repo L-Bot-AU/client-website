@@ -11,13 +11,12 @@
                 Open {{ lib["hours"] }}
             </div>
             <div class="col-lg-4" style="text-align: center">
-                Users: {{ lib["current"] }} / {{ lib["capacity"] }}<br>
+                Users: {{ lib["current"] }} / {{ lib["capacity"] }} ({{ (lib["current"] / lib["capacity"] * 100) | round | int }}%)<br>
                 <a href="/trends">See trends</a>
             </div>
-{#            todo add third column data?#}
             <div class="col-lg-4" style="text-align: right">
-                Expected capacity in next 30 mins:<br>
-                 {{ lib["minExpected"] }} to  {{ lib["maxExpected"] }} users
+                Expected capacity at break 1{#in next 30 mins#}:<br>
+                 {{ lib["minExpected"] }} to  {{ lib["maxExpected"] }} students
             </div>
         </div>
     {% endfor %}

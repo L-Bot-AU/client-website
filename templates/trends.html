@@ -11,20 +11,20 @@
 
 {% block page_content %}
     Trends!<br>
-    Click on a day to see the predictions for the<br>
-    expected number of users through the day.<br>
+    <p>Click on a day to see the predictions for the
+        expected number of users through the day.</p>
 
     <div class="row"> {# is this necessary? #}
-        <div class="col-lg-6">
+        <div class="col-lg-4">
 {#            indexing: [n/a, mon, tues, wed, thurs, fri, all]#}
-            <button class="graphSelect" onclick="displayGraph(6)">All</button>
-            <button class="graphSelect" onclick="displayGraph(1)">Monday</button>
-            <button class="graphSelect" onclick="displayGraph(2)">Tues</button>
-            <button class="graphSelect" onclick="displayGraph(3)">Wed</button>
-            <button class="graphSelect" onclick="displayGraph(4)">Thurs</button>
-            <button class="graphSelect" onclick="displayGraph(5)">Fri</button>
+            <button class="graphSelect" onclick="displayGraph(6)">All</button><br>
+            <button class="graphSelect" onclick="displayGraph(1)">Monday</button><br>
+            <button class="graphSelect" onclick="displayGraph(2)">Tuesday</button><br>
+            <button class="graphSelect" onclick="displayGraph(3)">Wednesday</button><br>
+            <button class="graphSelect" onclick="displayGraph(4)">Thursday</button><br>
+            <button class="graphSelect" onclick="displayGraph(5)">Friday</button><br>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <canvas id="myChart" width="400" height="200"></canvas>
         </div>
     </div>
@@ -32,6 +32,7 @@
     <script src="{{url_for('static', filename='graphs.js')}}"></script>
     <script>
         var allData = {{ data | safe }};
+        var selected = [0, 0, 0, 0, 0, 0, 0];
         {#console.table(allData);#}
         displayGraph(0);
     </script>
