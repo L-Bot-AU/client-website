@@ -66,7 +66,7 @@ def page_not_found(e):
     return render_template("404.html")
 
 
-
+#cwl stuff
 def pastData():
     #pass as a json
     # return '{"MonA": [("9:15am", 5), ("9:30am", 7), ("9:45am", 10), ("10:00am", 8)]}'

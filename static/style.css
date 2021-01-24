@@ -396,3 +396,9 @@ a.navbar-text:hover {
     background: rgb(240, 240, 240);
 }
 
+/*todo: make nice colours for buttons*/
+/*.graphSelect {*/
+/*    border: 3px solid var(--txt-primary-col);*/
+/*    background-color: var(--bg-library-col);*/
+/*    color: var(--txt-primary-col);*/
+/*}*/

@@ -6,7 +6,7 @@ function setTheme(themeName) {
 let checkBox = document.getElementById("toggle-box-checkbox");
 checkBox.onclick = function() {
 	let imgs = document.getElementsByTagName("img");
-	console.log(imgs);
+	// console.log(imgs);
 	if (checkBox.checked) {
 		console.log("dark mode");
 		setTheme('theme-dark');
@@ -21,7 +21,7 @@ checkBox.onclick = function() {
 			imgs[i].style.webkitFilter = "";
 		}
 	}
-	console.log(imgs);
+	// console.log(imgs);
 
 }
 
