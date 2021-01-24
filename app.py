@@ -57,14 +57,8 @@ def home():
 def trends():
     allData = pastData()
     # allData = json.load(pastData())
-    print(type(allData))
-    print("data:", allData)
-    # might not need below "selected" part
-    day = "Mon"
-    wk = "A"
-    selected = f"{day}{wk}"
-    # script, div = graphing.trends(selected, allData[selected])
-    return render_template("trends.html", data=allData, Selected=selected)
+
+    return render_template("trends.html", data=allData)
 
 
 @app.errorhandler(404)
@@ -76,13 +70,22 @@ def page_not_found(e):
 def pastData():
     #pass as a json
     # return '{"MonA": [("9:15am", 5), ("9:30am", 7), ("9:45am", 10), ("10:00am", 8)]}'
-    return {"": {"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 0},
-            "Mon": {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
-            "Tues": {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
-            "Wed": {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},
-            "Thurs": {"9:15am": 2, "9:30am": 5, "9:45am": 9, "10:00am": 9},
-            "Fri": {"9:15am": 7, "9:30am": 15, "9:45am": 9, "10:00am": 7},
-            "All": {"9:15am": 12, "9:30am": 7, "9:45am": 3, "10:00am": 8}}
+    #todo: order is [n/a, Mon, Tues, Wed, Thurs, Fri, All]
+    return [{"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 0},
+            {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
+            {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
+            {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},
+            {"9:15am": 2, "9:30am": 5, "9:45am": 9, "10:00am": 9},
+            {"9:15am": 7, "9:30am": 15, "9:45am": 9, "10:00am": 7},
+            {"9:15am": 12, "9:30am": 7, "9:45am": 3, "10:00am": 8}]
+
+    # return {"": {"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 0},
+    #         "Mon": {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
+    #         "Tues": {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
+    #         "Wed": {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},
+    #         "Thurs": {"9:15am": 2, "9:30am": 5, "9:45am": 9, "10:00am": 9},
+    #         "Fri": {"9:15am": 7, "9:30am": 15, "9:45am": 9, "10:00am": 7},
+    #         "All": {"9:15am": 12, "9:30am": 7, "9:45am": 3, "10:00am": 8}}
 
 
 @app.route("/<lib>Count")

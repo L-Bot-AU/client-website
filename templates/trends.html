@@ -11,17 +11,18 @@
 
 {% block page_content %}
     Trends!<br>
-    Include table of cycle, graph area on right<br>
+    Click on a day to see the predictions<br>
+    for the expected number of users through the day.<br>
 
     <div class="row"> {# is this necessary? #}
-{#    todo: get line graph working#}
         <div class="col-lg-6">
-            <button onclick="displayGraph('All')">All</button>
-            <button onclick="displayGraph('Mon')">Monday</button>
-            <button onclick="displayGraph('Tues')">Tues</button>
-            <button onclick="displayGraph('Wed')">Wed</button>
-            <button onclick="displayGraph('Thurs')">Thurs</button>
-            <button onclick="displayGraph('Fri')">Fri</button>
+{#            indexing: [n/a, mon, tues, wed, thurs, fri, all]#}
+            <button onclick="displayGraph(6)">All</button>
+            <button onclick="displayGraph(1)">Monday</button>
+            <button onclick="displayGraph(2)">Tues</button>
+            <button onclick="displayGraph(3)">Wed</button>
+            <button onclick="displayGraph(4)">Thurs</button>
+            <button onclick="displayGraph(5)">Fri</button>
         </div>
         <div class="col-lg-6">
             <canvas id="myChart" width="400" height="200"></canvas>
@@ -31,7 +32,7 @@
     <script src="{{url_for('static', filename='graphs.js')}}"></script>
     <script>
         var allData = {{ data | safe }};
-        {#var selected = '{{ Selected | safe }}';#}
-        {#todo: maybe remove selected? #}
+        console.table(allData);
+        displayGraph(0);
     </script>
 {% endblock %}
