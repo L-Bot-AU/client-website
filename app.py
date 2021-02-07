@@ -26,9 +26,9 @@ class RecvDataStub:
     def libraryAbout(self):
         return [
             {"name": "Senior Library", "hours": "9am - 3pm", "current": 20,
-             "capacity": 50, "minExpected": 20, "maxExpected": 30},
+             "capacity": 84, "minExpected": 20, "maxExpected": 30},
             {"name": "Junior Library", "hours": "9am - 3pm", "current": 10,
-             "capacity": 30, "minExpected": 10, "maxExpected": 25}
+             "capacity": 108, "minExpected": 10, "maxExpected": 25}
         ]
 
     def stats(self, libraryName, minDay, maxDay, minWeek, maxWeek):
@@ -61,6 +61,11 @@ def trends():
     return render_template("trends.html", data=allData)
 
 
+@app.route("/test")
+def test():
+    return render_template("testing.html")
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")
@@ -71,7 +76,7 @@ def pastData():
     #pass as a json
     # return '{"MonA": [("9:15am", 5), ("9:30am", 7), ("9:45am", 10), ("10:00am", 8)]}'
     #todo: order is [n/a, Mon, Tues, Wed, Thurs, Fri, All]
-    return [{"9:15am": 0, "9:30am": 0, "9:45am": 10, "10:00am": 0},
+    return [{"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 10},
             {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
             {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
             {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},

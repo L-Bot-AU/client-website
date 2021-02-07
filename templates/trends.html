@@ -16,13 +16,10 @@
 
     <div class="row"> {# is this necessary? #}
         <div class="col-lg-4">
-{#            indexing: [n/a, mon, tues, wed, thurs, fri, all]#}
-            <button class="graphSelect" onclick="displayGraph(6)">All</button><br>
-            <button class="graphSelect" onclick="displayGraph(1)">Monday</button><br>
-            <button class="graphSelect" onclick="displayGraph(2)">Tuesday</button><br>
-            <button class="graphSelect" onclick="displayGraph(3)">Wednesday</button><br>
-            <button class="graphSelect" onclick="displayGraph(4)">Thursday</button><br>
-            <button class="graphSelect" onclick="displayGraph(5)">Friday</button><br>
+        {#            indexing: [n/a, mon, tues, wed, thurs, fri, all]#}
+            {% for i in range(1, 6) %}
+                <button class="graphSelect" onclick="displayGraph({{ i }})">{{ ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"][i] }}</button><br>
+            {% endfor %}
         </div>
         <div class="col-lg-8">
             <canvas id="myChart" width="400" height="200"></canvas>
@@ -33,7 +30,6 @@
     <script>
         var allData = {{ data | safe }};
         var selected = [0, 0, 0, 0, 0, 0, 0];
-        {#console.table(allData);#}
         displayGraph(0);
     </script>
 {% endblock %}

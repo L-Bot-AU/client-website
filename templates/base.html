@@ -38,6 +38,9 @@
     <div class="container-fluid body-content" style="padding: 50px">
         {% block page_content %}{% endblock %}
     </div>
+    <script>
+        let checkBox = document.getElementById("toggle-box-checkbox");
+    </script>
     <script src="{{url_for('static', filename='themetoggle.js')}}"></script>
     <script src="{{url_for('static', filename='requests.js')}}"></script>
 {% endblock %}

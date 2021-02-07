@@ -277,6 +277,7 @@ table {
     color: red !important;
 }
 
+/*TODO FIX UP ALL THIS CODE TO MAKE DARK MODE DEFAULT!!!HACUILEW FWAIUVEIUAV BAIV BAIVBWAILVBDSIULVWALVALV*/
 /* RYAN: begin toggle theme styles */
 .toggle-box {
 
@@ -404,4 +405,5 @@ a.navbar-text:hover {
     margin-bottom: 10px;
     background-color: var(--bg-library-col);
     color: var(--txt-primary-col);
+    transition-duration: 1s;
 }

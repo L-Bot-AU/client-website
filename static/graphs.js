@@ -9,12 +9,12 @@ function displayGraph(update){
     }
     // console.table(time);
     var allDatasets = [];
-    for (var i = 0; i < 8; i++){
+    for (let i = 0; i < 8; i++){
         if (selected[i]){
             allDatasets.push(dataset(i));
         }
     }
-    var myChart = new Chart(ctx, {
+    new Chart(ctx, {
         type: 'line',
         data: {
             labels: time,

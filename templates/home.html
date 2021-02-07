@@ -4,21 +4,33 @@
 
 {% block page_content %}
     <p>Welcome!</p>
-    {% for lib in data %}
-        <div class="row library">
-            <div class="col-lg-4">
-                {{ lib["name"] }}<br>
-                Open {{ lib["hours"] }}
-            </div>
-            <div class="col-lg-4" style="text-align: center">
-                Users: {{ lib["current"] }} / {{ lib["capacity"] }} ({{ (lib["current"] / lib["capacity"] * 100) | round | int }}%)<br>
-                <a href="/trends">See trends</a>
-            </div>
-            <div class="col-lg-4" style="text-align: right">
-                Expected capacity at break 1{#in next 30 mins#}:<br>
-                 {{ lib["minExpected"] }} to  {{ lib["maxExpected"] }} students
-            </div>
+    <div class="row library">
+        <div class="col-lg-4">
+            Senior Library<br>
+            Open 9am - 3pm
         </div>
-    {% endfor %}
-    <p>yay!!!</p>
+        <div class="col-lg-4" style="text-align: center">
+            Users: <span class="update" id="snrCount">0</span> / 84 ({{ (0 / 84 * 100) | round | int }}%)<br>
+            <a href="/trends">See trends</a>
+        </div>
+        <div class="col-lg-4" style="text-align: right">
+            Expected capacity at break 1{#in next 30 mins#}:<br>
+            <span class="update" id="snrPredictions">0</span> students
+        </div>
+    </div>
+
+    <div class="row library">
+        <div class="col-lg-4">
+            Junior Library<br>
+            Open 9am - 3pm
+        </div>
+        <div class="col-lg-4" style="text-align: center">
+            Users: <span class="update" id="jnrCount">0</span> / 108 ({{ (0 / 108 * 100) | round | int }}%)<br>
+            <a href="/trends">See trends</a>
+        </div>
+        <div class="col-lg-4" style="text-align: right">
+            Expected capacity at break 1{#in next 30 mins#}:<br>
+            <span class="update" id="jnrPredictions">0</span> students
+        </div>
+    </div>
 {% endblock %}
