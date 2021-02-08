@@ -1,5 +1,7 @@
 #Documentation:
 #Chart.js documentation: https://www.chartjs.org/docs/latest/
+#localStorage in js: https://code-maven.com/slides/javascript/local-storage-boolean
+#innerHTML updating: https://www.w3schools.com/js/js_htmldom_events.asp
 
 from flask import Flask, render_template, request, jsonify
 import requests
