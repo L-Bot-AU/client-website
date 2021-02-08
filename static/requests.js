@@ -4,8 +4,6 @@
 const host = "127.0.0.1";
 const port = 2910;
 
-var autoUpdate = window.setInterval(updateAll, 5*1000);
-
 function updateAll() {
     todo = ["snrCount", "jnrCount"];//, "snrPredictions", "jnrPredictions"];
     console.log("updating...");
