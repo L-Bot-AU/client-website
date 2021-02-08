@@ -2,12 +2,9 @@ function displayGraph(update){
     selected[update] = 1 - selected[update];
     var ctx = document.getElementById('myChart').getContext('2d');
     console.log("graph display updated");
-    // console.log(allData);
-    var time = [];
-    for (const key in allData[0]) {
-        time.push(key);
-    }
-    // console.table(time);
+    // console.log(graphData);
+    var times = graphData["labels"];
+    // console.table(times);
     var allDatasets = [];
     for (let i = 0; i < 8; i++){
         if (selected[i]){
@@ -17,7 +14,7 @@ function displayGraph(update){
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: time,
+            labels: times,
             datasets: allDatasets
         },
         options: {
@@ -33,23 +30,9 @@ function displayGraph(update){
 }
 
 function dataset(index){
-    var points = [];
-    for (const key in allData[index]) {
-        points.push(allData[index][key]);
-    }
-    // console.table(points);
-    var data = {label: ["", "Mon", "Tues", "Wed", "Thurs", "Fri", "All"][index],
-                data: points,
+    var data = {label: ["", "Mon", "Tues", "Wed", "Thurs", "Fri"][index],
+                data: graphData["data"][index],
                 backgroundColor: 'rgba(0, 0, 0, 0)',
-                // backgroundColor: [
-                //     'rgba(0, 0, 0, 0)',
-                //     'rgba(255, 99, 132, 0.2)',
-                //     'rgba(54, 162, 235, 0.2)',
-                //     'rgba(255, 206, 86, 0.2)',
-                //     'rgba(75, 192, 192, 0.2)',
-                //     'rgba(153, 102, 255, 0.2)',
-                //     'rgba(255, 159, 64, 0.2)'
-                // ][index],
                 borderColor: [
                     'rgba(0, 0, 0, 0)',
                     'rgba(255, 99, 132, 1)',

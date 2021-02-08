@@ -9,56 +9,19 @@ import urllib.request, json
 from datetime import datetime
 
 
-import graphing
-
-
 app = Flask(__name__)
 app.secret_key = "super secret"
 bootstrap = Bootstrap(app)
 
 
-class RecvDataStub:
-    def __init__(self):
-        self.days = ["Mon", "Tue", "Wed", "Thu", "Fri"]
-        self.weeks = ["A", "B", "C"]
-        print("initialising server connection")
-
-    def libraryAbout(self):
-        return [
-            {"name": "Senior Library", "hours": "9am - 3pm", "current": 20,
-             "capacity": 84, "minExpected": 20, "maxExpected": 30},
-            {"name": "Junior Library", "hours": "9am - 3pm", "current": 10,
-             "capacity": 108, "minExpected": 10, "maxExpected": 25}
-        ]
-
-    def stats(self, libraryName, minDay, maxDay, minWeek, maxWeek):
-        assert libraryName in ["Senior library", "Junior library"], "Invalid LibName"
-        assert minDay in self.days, "Invalid Day"
-        assert maxDay in self.days, "Invalid Day"
-        assert self.days.index(minDay) <= self.days.index(maxDay), "minDay larger than maxDay"
-        assert minWeek in self.weeks, "Invalid Week"
-        assert maxWeek in self.weeks, "Invalid Week"
-        assert self.weeks.index(minWeek) <= self.weeks.index(maxWeek), "minWeek larger than maxWeek"
-        return [
-            "(minutes past 12 midnight (int), amount (int))"
-        ]
-        # raise NotImplemented
-
-database = RecvDataStub()
-
-
 @app.route('/')
 def home():
-    hard_code = database.libraryAbout()
-    return render_template("home.html", data=hard_code)
+    return render_template("home.html")
 
 
 @app.route("/trends")
 def trends():
-    allData = pastData()
-    # allData = json.load(pastData())
-
-    return render_template("trends.html", data=allData)
+    return render_template("trends.html")
 
 
 @app.route("/test")
@@ -69,33 +32,6 @@ def test():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")
-
-
-#cwl stuff
-def pastData():
-    #pass as a json
-    # return '{"MonA": [("9:15am", 5), ("9:30am", 7), ("9:45am", 10), ("10:00am", 8)]}'
-    #todo: order is [n/a, Mon, Tues, Wed, Thurs, Fri, All]
-    return [{"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 10},
-            {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
-            {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
-            {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},
-            {"9:15am": 2, "9:30am": 5, "9:45am": 9, "10:00am": 9},
-            {"9:15am": 7, "9:30am": 15, "9:45am": 9, "10:00am": 7},
-            {"9:15am": 12, "9:30am": 7, "9:45am": 3, "10:00am": 8}]
-
-    # return {"": {"9:15am": 0, "9:30am": 0, "9:45am": 0, "10:00am": 0},
-    #         "Mon": {"9:15am": 5, "9:30am": 7, "9:45am": 10, "10:00am": 8},
-    #         "Tues": {"9:15am": 3, "9:30am": 2, "9:45am": 6, "10:00am": 7},
-    #         "Wed": {"9:15am": 1, "9:30am": 8, "9:45am": 12, "10:00am": 6},
-    #         "Thurs": {"9:15am": 2, "9:30am": 5, "9:45am": 9, "10:00am": 9},
-    #         "Fri": {"9:15am": 7, "9:30am": 15, "9:45am": 9, "10:00am": 7},
-    #         "All": {"9:15am": 12, "9:30am": 7, "9:45am": 3, "10:00am": 8}}
-
-
-@app.route("/<lib>Count")
-def count(lib):
-    return "1291"
 
 
 if __name__ == '__main__':

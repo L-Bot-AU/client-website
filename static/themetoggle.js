@@ -1,3 +1,5 @@
+let checkBox = document.getElementById("toggle-box-checkbox");
+
 function setTheme(themeName) {
 	localStorage.setItem('theme', themeName);
     document.documentElement.className = themeName;
@@ -23,5 +25,7 @@ checkBox.onclick = function() {
 	// console.log(imgs);
 
 }
-
+// checkBox.checked = true;
+if (localStorage.getItem("theme") === null) localStorage.setItem("theme", "theme-dark")
+checkBox.checked = (localStorage.getItem("theme") === "theme-dark");
 checkBox.onclick();

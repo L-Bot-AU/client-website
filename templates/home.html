@@ -10,7 +10,7 @@
             Open 9am - 3pm
         </div>
         <div class="col-lg-4" style="text-align: center">
-            Users: <span class="update" id="snrCount">0</span> / 84 ({{ (0 / 84 * 100) | round | int }}%)<br>
+            Users: <span class="update" id="snrCount">0</span> / 84 (<span class="update" id="snrCount%">0</span>%)<br>
             <a href="/trends">See trends</a>
         </div>
         <div class="col-lg-4" style="text-align: right">
@@ -25,7 +25,7 @@
             Open 9am - 3pm
         </div>
         <div class="col-lg-4" style="text-align: center">
-            Users: <span class="update" id="jnrCount">0</span> / 108 ({{ (0 / 108 * 100) | round | int }}%)<br>
+            Users: <span class="update" id="jnrCount">0</span> / 108 (<span class="update" id="jnrCount%">0</span>%)<br>
             <a href="/trends">See trends</a>
         </div>
         <div class="col-lg-4" style="text-align: right">
@@ -33,4 +33,8 @@
             <span class="update" id="jnrPredictions">0</span> students
         </div>
     </div>
+
+    <script>
+        updateAll();
+    </script>
 {% endblock %}

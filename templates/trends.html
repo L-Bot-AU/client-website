@@ -5,8 +5,7 @@
 {% block head_content %}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
 	<script src="https://www.chartjs.org/dist/2.9.4/Chart.min.js"></script>
-{#	<script src="https://www.chartjs.org/samples/latest/utils.js"></script>#}
-{#    <script src="path/to/chartjs/dist/Chart.js"></script>#}
+    <script src="{{url_for('static', filename='graphs.js')}}"></script>
 {% endblock %}
 
 {% block page_content %}
@@ -16,7 +15,7 @@
 
     <div class="row"> {# is this necessary? #}
         <div class="col-lg-4">
-        {#            indexing: [n/a, mon, tues, wed, thurs, fri, all]#}
+        {#            indexing: [n/a, mon, tues, wed, thurs, fri]#}
             {% for i in range(1, 6) %}
                 <button class="graphSelect" onclick="displayGraph({{ i }})">{{ ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"][i] }}</button><br>
             {% endfor %}
@@ -26,10 +25,9 @@
         </div>
     </div>
 
-    <script src="{{url_for('static', filename='graphs.js')}}"></script>
     <script>
         var allData = {{ data | safe }};
         var selected = [0, 0, 0, 0, 0, 0, 0];
-        displayGraph(0);
+        getReq("snrPredictions", "graph");
     </script>
 {% endblock %}
