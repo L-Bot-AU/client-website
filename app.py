@@ -2,6 +2,7 @@
 #Chart.js documentation: https://www.chartjs.org/docs/latest/
 #localStorage in js: https://code-maven.com/slides/javascript/local-storage-boolean
 #innerHTML updating: https://www.w3schools.com/js/js_htmldom_events.asp
+#setInterval for website to automatically call websocket: https://www.w3schools.com/jsref/met_win_setinterval.asp
 
 from flask import Flask, render_template, request, jsonify
 import requests

@@ -407,3 +407,7 @@ a.navbar-text:hover {
     color: var(--txt-primary-col);
     transition-duration: 1s;
 }
+
+.bold-this{
+    font-weight: bold;
+}
