@@ -25,7 +25,10 @@
 
     <script src="{{url_for('static', filename='graphs.js')}}"></script>
     <script>
-        var selected = [0, 0, 0, 0, 0, 0, 0];
-        getReq("snrPredictions", "graph");
+        // var selected = [0, 0, 0, 0, 0, 0, 0];
+        getReq("jnrPredictions", "graph");
+        var ctx = document.getElementById('myChart').getContext('2d');
+        console.log(window.graphData);
+        console.log("bWAHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
     </script>
 {% endblock %}
