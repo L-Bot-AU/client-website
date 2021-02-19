@@ -97,11 +97,6 @@ body > * {
 
 a {
     text-decoration: None !important;
-
-}
-
-a:hover {
-    color: #FF5A09 !important;
 }
 
 .navbar {
