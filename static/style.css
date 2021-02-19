@@ -1,45 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Carme&family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Carme&family=Roboto&display=swap');
+
+
+/*Both the light and dark themes inherit all values in this.
+This is used for dhared values like interface sizing, and fonts*/
+[class*="theme-"]{
+    --navbarheadersize: 35px;
+    --border-rad: 25px;
+    --primary-font: 'Carme';
+    --secondary-font: 'Roboto';
+}
 
 .theme-light {
-	--navbarheadersize: 35px;
-
-    --bg-primary-col: rgb(220, 220, 220);
+    --bg-primary-col: #DCDCDC;
     --bg-second-col: #FFFFFF;
     --bg-third-col: #FCFCFC;
-    --bg-fourth-col: #FFFFFF;
-    --bg-nav-col-2: #393F4D;
-    --bg-library-col: rgb(240, 240, 240);
-    --txt-primary-col: #1E90FF;
-    --a-hover-col: #1E90FF;
-    --nav-primary-col: #1E90FF;
-    --txt-col: #000000;
-    --toggle-box-text: "Light";
-    --border-rad: 25px;
+    /*--bg-nav-col-2: #393F4D;*/
+    --bg-library-col: #DCDCDC;
 
-	--primary-font: 'Carme';
-	--secondary-font: 'Roboto';
+    --txt-primary-col: #1E90FF;
+    --nav-primary-col: #1E90FF;
+    --a-hover-col: #1E90FF;
+    --txt-col: #000000;
+
+    --toggle-box-text: "Light";
 }
 
 .theme-dark {
-	--navbarheadersize: 35px;
-
 	--bg-primary-col: #121212;
-    --bg-google-col: #283142;
 	--bg-second-col: #000000;
 	--bg-third-col: #393F4D;
-	--bg-fourth-col: #000000;
-    --bg-nav-col-2: #393F4D;
+    /* --bg-nav-col-2: #393F4D; */
     --bg-library-col: #283142;
+
 	--txt-primary-col: #4DD0E1;
 	--nav-primary-col: #1E90FF;
 	--a-hover-col: #FF5A09;
-	--txt-col: #FFFFFF;
+    --txt-col: #FFFFFF;
+    
     --toggle-box-text: "Dark";
-    --border-rad: 25px;
-
-	--primary-font: 'Carme';
-	--secondary-font: 'Roboto';
 }
 
 a, h1, h2, h3, h4, h5, h6, i, #setting-content-wrapper {
@@ -50,10 +48,10 @@ a, h1, h2, h3, h4, h5, h6, i, #setting-content-wrapper {
 hr {
 	background: var(--txt-primary-col);
 }
+
 a:hover {
     color: var(--a-hover-col);
 }
-
 
 p, div {
     transition-duration: 1s;
@@ -108,8 +106,8 @@ a:hover {
 
 .navbar {
     transition-duration: 1s;
-    background: var(--bg-fourth-col);
-    /*background: linear-gradient(180deg, var(--bg-fourth-col), var(--bg-primary-col));*/
+    background: var(--bg-second-col);
+    /*background: linear-gradient(180deg, var(--bg-second-col), var(--bg-primary-col));*/
     border-bottom: 1px var(--txt-primary-col) solid;
     height: 80px;
 }
@@ -148,7 +146,6 @@ a:hover {
 .dropdown-align {
     width: 80px;
 }
-
 
 table {
     text-align: center;
@@ -232,7 +229,6 @@ table {
     display: block;
     background-color: var(--bg-third-col);
     color: var(--txt-col);
-
 }
 
 
@@ -270,7 +266,6 @@ table {
 
 #redirect-signup:hover {
     color: #FF5A09 !important;
-
 }
 
 .flash-content {
@@ -282,6 +277,7 @@ table {
 .toggle-box {
 
 }
+
 .toggle-box input[type=checkbox], .toggle-box input[type=checkbox]:active {
     display: none;
 }
@@ -368,7 +364,6 @@ table {
 #dashboard-form {
     width: 80%;
     text-align: center;
-
 }
 
 #showcase-button {
@@ -411,6 +406,8 @@ a.navbar-text:hover {
 .bold-this{
     font-weight: bold;
 }
+
+/*For late use*/
 
 .update{
 }
