@@ -79,7 +79,6 @@ body {
     position: absolute;
     width: 100%;
     top: 0px; /* how much you want to shift entire body down */
-
 }
 
 body > * {
@@ -267,10 +266,8 @@ table {
     color: red !important;
 }
 
-/*TODO FIX UP ALL THIS CODE TO MAKE DARK MODE DEFAULT!!!HACUILEW FWAIUVEIUAV BAIV BAIVBWAILVBDSIULVWALVALV*/
-/* RYAN: begin toggle theme styles */
 .toggle-box {
-
+    text-align: right;
 }
 
 .toggle-box input[type=checkbox], .toggle-box input[type=checkbox]:active {
