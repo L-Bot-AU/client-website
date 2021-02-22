@@ -6,6 +6,9 @@
 
 {% block styles %}
 {{super()}}
+<script>
+    document.documentElement.hidden = true; // smart fix for FOUC (Flash Of Unstyled Content) where the raw, unstyled page would generate before the final one.
+</script>
 <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 {% block head_content %}{% endblock %}
 {% endblock %}
@@ -38,6 +41,9 @@
 
     <script src="{{url_for('static', filename='themetoggle.js')}}"></script>
     <script src="{{url_for('static', filename='requests.js')}}"></script>
+    <script>
+        document.documentElement.hidden = false;
+    </script>
     <div class="container-fluid body-content" style="padding: 50px">
         {% block page_content %}{% endblock %}
     </div>

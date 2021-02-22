@@ -29,3 +29,15 @@ checkBox.onclick = function() {
 if (localStorage.getItem("theme") === null) localStorage.setItem("theme", "theme-dark")
 checkBox.checked = (localStorage.getItem("theme") === "theme-dark");
 checkBox.onclick();
+
+function testing(){
+	n = localStorage.getItem("thing");
+	if (n === null){
+		console.log("null");
+		n = 0;
+	} else {
+		console.log(n);
+		n++;
+	}
+	localStorage.setItem("thing", n);
+}

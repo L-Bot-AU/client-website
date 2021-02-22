@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Carme&family=Roboto&display=swap');
 
-
 /*Both the light and dark themes inherit all values in this.
-This is used for dhared values like interface sizing, and fonts*/
+This is used for shared values like interface sizing, and fonts*/
 [class*="theme-"]{
     --navbarheadersize: 35px;
     --border-rad: 25px;
@@ -332,7 +331,6 @@ table {
     display: inline-block;
     position: relative;
     padding: 0;
-    margin-bottom: 20px;
     font-size: 14px;
     line-height: 16px;
     cursor: pointer;
