@@ -91,6 +91,7 @@ body > * {
 
 .logo-size {
     height: var(--navbarheadersize);
+    transition-duration: 1s;
 }
 
 a {
@@ -374,7 +375,7 @@ table {
 }
 
 .navbar-text {
-    transition-duration: 0.4s;
+    transition-duration: 1s;
     height: 80px;
     padding: 30px 20px 20px 20px;
 }
