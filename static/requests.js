@@ -3,7 +3,7 @@
 
 // const host = "127.0.0.1";
 // const host = "10.219.218.62";
-const host = "192.168.137.62";
+const host = "192.168.137.1";
 const port = 2910;
 
 function updateAll() {
@@ -38,14 +38,15 @@ function getReq(upd, type) {
                                 scales: {
                                     yAxes: [{
                                         ticks: {
-                                            beginAtZero: true
+                                            beginAtZero: true,
+                                            max: 100
                                         }
                                     }]
                                 }
                             }
                         });
         } else {
-            console.log("unidentified type");
+            console.log("unidentified request type");
         }
     }
 }
@@ -59,3 +60,4 @@ function updCount(upd, result){
     if (upd[0] === "s") document.getElementById(upd+"%").innerHTML = Math.round(result/84*100); //hard coded library capacities
     else document.getElementById(upd+"%").innerHTML = Math.round(result/108*100);
 }
+
