@@ -1,5 +1,6 @@
 #Documentation:
 #Chart.js documentation: https://www.chartjs.org/docs/latest/
+#clearing ad updating graph in chart.js: https://www.chartjs.org/docs/latest/developers/updates.html
 #localStorage in js: https://code-maven.com/slides/javascript/local-storage-boolean
 #innerHTML updating: https://www.w3schools.com/js/js_htmldom_events.asp
 #setInterval for website to automatically call websocket: https://www.w3schools.com/jsref/met_win_setinterval.asp

@@ -379,6 +379,7 @@ table {
     height: 80px;
     padding: 30px 20px 20px 20px;
 }
+
 a.navbar-text:hover {
     background: rgb(240, 240, 240);
 }

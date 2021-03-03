@@ -1,9 +1,9 @@
 // todo make diff functions for each data, main function loops thru each and updates value
 // todo Expected?
 
-// const host = "127.0.0.1";
+const host = "127.0.0.1";
 // const host = "10.219.218.62";
-const host = "192.168.137.1";
+// const host = "192.168.137.1";
 const port = 2910;
 
 function updateAll() {
@@ -31,8 +31,7 @@ function getReq(upd, type) {
             window.trends = new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                labels: window.graphData["labels"],
-                                datasets: [dataset(0)]
+                                labels: window.graphData["labels"]
                             },
                             options: {
                                 scales: {
@@ -61,3 +60,7 @@ function updCount(upd, result){
     else document.getElementById(upd+"%").innerHTML = Math.round(result/108*100);
 }
 
+function hardCode(){
+    console.log("hardcoded data");
+    window.graphData = {"labels": ["morning", "break 1", "break 2"], "data": [[0, 0, 10], [1, 4, 6], [1, 7, 2], [3, 7, 8], [1, 6, 9], [2, 5, 7]]};
+}
