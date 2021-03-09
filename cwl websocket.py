@@ -9,8 +9,7 @@ async def server(websocket, path):
         "/snrTime": lambda: '"break 1"',
         "/jnrTime": lambda: '"break 1"',
         "/jnrPredictions": lambda: '''{"labels": ["Morning", "Break 1", "Break 2"],
-"data": [[0, 0, 80],
-[53, 34, 26],
+"data": [[53, 34, 26],
 [52, 54, 20],
 [44, 14, 30],
 [40, 12, 12],
@@ -18,13 +17,12 @@ async def server(websocket, path):
 ]
 }''',
         "/snrPredictions": lambda: '''{"labels": ["Morning", "Break 1", "Break 2"],
-"data": [[0, 0, 80],
- [53, 34, 26],
- [52, 54, 20],
- [44, 14, 30],
- [40, 12, 12],
- [80, 14, 33]
- ]
+"data": [[53, 34, 26],
+[52, 54, 20],
+[44, 14, 30],
+[40, 12, 12],
+[80, 14, 33]
+]
 }'''
   }
 
