@@ -10,11 +10,11 @@
     <p>Click on a day to see the predictions for the
         expected number of users through the day.</p>
 
-    <div class="row"> {# is this necessary? #}
+    <div class="row"> <!-- is this necessary? -->
         <div class="col-lg-4">
-        {#            indexing: [n/a, mon, tues, wed, thurs, fri]#}
-            {% for i in range(5) %}
-                <button class="graphSelect" onclick="displayGraph({{ i }})">{{ ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"][i] }}</button><br>
+            <!-- indexing: [n/a, mon, tues, wed, thurs, fri]-->
+            {% for i in range(1, 6) %}
+                <button class="graphSelect" onclick="displayGraph({{ i }})">{{ ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"][i] }}</button><br>
             {% endfor %}
         </div>
         <div class="col-lg-8">
@@ -28,6 +28,6 @@
         getReq("jnrPredictions", "graph");
         var ctx = document.getElementById('myChart').getContext('2d');
         console.log(window.graphData);
-        console.log("bWAHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+        //console.log("bWAHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
     </script>
 {% endblock %}
