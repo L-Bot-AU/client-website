@@ -8,7 +8,7 @@ const port = 2910;
 
 function updateAll() {
     libs = ["snr", "jnr"];
-    todo = ["Count"];//, "Time"];
+    todo = ["Count"];
     for (let i = 0; i < 2 ; i++){
         for (let j = 0; j < 1; j++) {
             getReq(libs[i] + todo[j], "updText");
