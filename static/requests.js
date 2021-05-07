@@ -1,20 +1,38 @@
-// todo make diff functions for each data, main function loops thru each and updates value
-// todo Expected?
-
 const host = "127.0.0.1";
 // const host = "10.219.218.62";
 // const host = "192.168.137.1";
 const port = 2910;
 
-function updateAll() {
-    libs = ["snr", "jnr"];
-    todo = ["Count"];
-    for (let i = 0; i < 2 ; i++){
-        for (let j = 0; j < 1; j++) {
-            getReq(libs[i] + todo[j], "updText");
-        }
-    }
-}
+// todo enable cross origin resource sharing (CORS)?
+const socket = io("ws://localhost:5000");
+
+socket.on("connect", () => {
+  // either with send()
+  socket.send("Hello!");
+
+  // or with emit() and custom event names
+  socket.emit("salutations", "Hello!", { "mr": "john" });
+});
+
+// handle the event sent with socket.send()
+socket.on("message", data => {
+  console.log(data);
+});
+
+// handle the event sent with socket.emit()
+socket.on("greetings", (elem1, elem2, elem3) => {
+  console.log(elem1, elem2, elem3);
+});
+
+// function updateAll() {
+//     libs = ["snr", "jnr"];
+//     todo = ["Count"];
+//     for (let i = 0; i < 2 ; i++){
+//         for (let j = 0; j < 1; j++) {
+//             getReq(libs[i] + todo[j], "updText");
+//         }
+//     }
+// }
 
 function getReq(upd, type) {
     let sock = new WebSocket(`ws://${host}:${port}/${upd}`);
