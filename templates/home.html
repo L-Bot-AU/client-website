@@ -34,8 +34,12 @@
         </div>
     </div>
 
+    {# ryan dont go past this line >:( #}
+    
     <script>
         updateAll();
         // var autoUpdate = window.setInterval(updateAll, 3*1000);//number chosen by T3oDu1fo
+        localStorage.setItem("lib", "snr");
+        socket.emit("connect");
     </script>
 {% endblock %}
