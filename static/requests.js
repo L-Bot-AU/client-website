@@ -4,14 +4,18 @@ const host = "127.0.0.1";
 const port = 2910;
 
 // todo enable cross origin resource sharing (CORS)?
-const socket = io("ws://localhost:5000");
+
+// todo change below line when actually going into production, add argument
+const socket = io('http://localhost:5000');
 
 socket.on("connect", () => {
+    console.log("connected?");
   // either with send()
-  socket.send("Hello!");
+  // socket.send("Hello!");
 
   // or with emit() and custom event names
-  socket.emit("salutations", "Hello!", { "mr": "john" });
+  socket.emit("count");
+  console.log("received count?");
 });
 
 // handle the event sent with socket.send()
@@ -20,8 +24,8 @@ socket.on("message", data => {
 });
 
 // handle the event sent with socket.emit()
-socket.on("greetings", (elem1, elem2, elem3) => {
-  console.log(elem1, elem2, elem3);
+socket.on("countUpd", (libname, cnt) => {
+  console.log(libname, cnt);
 });
 
 // function updateAll() {

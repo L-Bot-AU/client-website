@@ -42,7 +42,8 @@
         </div>
     </nav>
 
-    <script src="{{url_for('static', filename='socketio.js')}}"></script>
+{#    <script src="{{url_for('static', filename='socketio.js')}}"></script>#}
+    <script src="https://cdn.socket.io/4.1.1/socket.io.min.js" integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a" crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='themetoggle.js')}}"></script>
     <script src="{{url_for('static', filename='requests.js')}}"></script>
     <script>
