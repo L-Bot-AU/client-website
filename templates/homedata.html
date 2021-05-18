@@ -1,0 +1,36 @@
+{% macro today(libname) -%}
+	<!-- TODO -->
+    <img src="static/img.jpg" width=800>
+{%- endmacro %}
+
+{% macro pasttrends(libname) -%}
+	<!-- TODO -->
+	<script src="https://www.chartjs.org/dist/2.9.4/Chart.min.js"></script>
+	<style>
+		.graphSelect {
+			border: 3px solid var(--txt-primary-col);
+			border-radius: 25px;
+			width: inherit;
+			margin-bottom: 10px;
+			background-color: var(--bg-library-col);
+			color: var(--txt-primary-col);
+			transition-duration: 1s;
+		}
+	</style>
+	<p>Click on a day to see the predictions for the expected number of users through the day.</p>
+
+	<!-- indexing: [n/a, mon, tues, wed, thurs, fri]-->
+	{% for i in range(1, 6) %}
+		<button class="focusbtn" onclick="displayGraph({{ i }})">{{ ["", "Mon", "Tue", "Wed", "Thu", "Fri"][i] }}</button>
+	{% endfor %}
+	<div class="col-lg-8">
+		<canvas id="`" width="400" height="200"></canvas>
+	</div>
+	<script src="{{url_for('static', filename='graphs.js')}}"></script>
+	<script>
+		// var selected = [0, 0, 0, 0, 0, 0, 0];
+		getReq("jnrPredictions", "graph");
+		var ctx = document.getElementById('myChart').getContext('2d');
+		console.log(window.graphData);
+	</script>
+{%- endmacro %}

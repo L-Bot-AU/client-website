@@ -6,4 +6,4 @@ kill %1 # stop the website
 python3 website-but-bad/app.py & # run da code in da background
 # then go to http://sr8137wxs02.win.sydneyboys-h.schools.nsw.edu.au:8000/
 
-pip3 install flask # to install the flask, for example
+# pip3 install flask # to install the flask, for example

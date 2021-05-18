@@ -1,45 +1,144 @@
+<!-- use macros: https://www.webforefront.com/django/createreusablejinjatemplates.html-->
 {% extends 'base.html' %}
 
 {% block page_title %}Home{% endblock %}
 
 {% block page_content %}
-    <p>Welcome!</p>
-    <div class="row library">
-        <div class="col-lg-4">
-            Senior Library<br>
-            Open 9am - 3pm
-        </div>
-        <div class="col-lg-4" style="text-align: center">
-            Users: <span class="update" id="snrCount">0</span> / 84 (<span class="update" id="snrCount%">0</span>%)<br>
-            <a href="/trends">See trends</a>
-        </div>
-        <div class="col-lg-4" style="text-align: right">
-            Expected capacity at <span class="bold-this" id="snrTime">morning</span>:<br>
-            <span class="update" id="snrPredictions">0</span> students
-        </div>
-    </div>
+	<style>
+		.focusbtn {
+			padding: 15px 15px 0px 15px;
+			background-color: transparent;
+			border: none;
+			font-size: 20px;
+			font-weight: 800;
+		}
+		.focusbtn:focus {
+			outline: none;
+		}
+		
+		.tabwrapper {
+			width: 180vw;
+			position: absolute;
+			transition-duration: 0.5s;
+			transform: translate(0%);
+			margin-top: 40px;
+		}
+		.jnrtab {
+			width: 90vw;
+			opacity: 1;
+			transition:opacity 0.5s linear;
+		}
+		.snrtab {
+			width: 90vw;
+			opacity: 0;
+			transition:opacity 0.5s linear;
+		}
+		.tabline {
+			position: absolute;
+			height: 2px;
+			width: 70px;
+			background-color: var(--txt-primary-col);
+			left: calc(50% - 82px);
+		}
+		
+		.focusright .tabwrapper {
+			transform: translate(-50%);
+		}
+		.focusright .jnrtab {
+			opacity: 0;
+			transition:opacity 0.5s linear;
+		}
+		.focusright .snrtab {
+			opacity: 1;
+			transition:opacity 0.5s linear;
+		}
+		.focusright .tabline {
+			left: calc(50% + 8px);
+		}
+		
+		.alert {
+			color: white;
+			background-color: red;
+			border-radius: 20px;
+			padding: 15px;
+			font-size: 20px;
+		}
+		
+		.closebtn {
+		  color: white;
+		  font-weight: 900;
+		  float: right;
+		  font-size: 40px;
+		  line-height: 0px;
+		  cursor: pointer;
+		  transition: 0.3s;
+		  padding: 10px;
+		}
+		.closebtn:hover {
+		  color: black;
+		}
 
-    <div class="row library">
-        <div class="col-lg-4">
-            Junior Library<br>
-            Open 9am - 3pm
-        </div>
-        <div class="col-lg-4" style="text-align: center">
-            Users: <span class="update" id="jnrCount">0</span> / 108 (<span class="update" id="jnrCount%">0</span>%)<br>
-            <a href="/trends">See trends</a>
-        </div>
-        <div class="col-lg-4" style="text-align: right">
-            Expected capacity at <span class="bold-this" id="jnrTime">morning</span>:<br>
-            <span class="update" id="jnrPredictions">0</span> students
-        </div>
-    </div>
-
-    {# ryan dont go past this line >:( #}
-
+		.status {
+			font-size: 40px;
+			text-align: center;
+		}
+		
+		.title {
+			font-size: 50px;
+			text-align: center;
+			padding: 20px;
+		}
+	</style>
+	<button type="button" class="focusbtn" onclick="setFocus('jnrtab')">Junior</button>
+	<button type="button" class="focusbtn" onclick="setFocus('snrtab')">Senior</button>
+	<div class="tabline"></div>
+	<table class="tabwrapper">
+		<tr valign="top">
+			{% for lib in ["jnr", "snr"] %}
+			<th class="{{ lib }}tab">
+				{% if true %}
+					<div class="alert">
+						<span>⚠</span>
+						<span id="{{ lib }}warning">Junior library overtaken by wild animals! Keep out!</span>
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+					</div>
+				{% endif %}
+				<div class="status">
+					<span id="{{ lib }}status">Not busy:</span>
+					~
+					<span id="{{ lib }}remaining">70</span>
+					spots remaining
+				</div>
+				<div class="title">TODAY</div>
+				{% import "homedata.html" as homedata %}
+				{{ homedata.today(lib) }}
+				
+				<div class="title">PAST TRENDS</div>
+				{% import "homedata.html" as homedata %}
+				{{ homedata.pasttrends(lib) }}
+			</th>
+			{% endfor %}
+		</tr>
+	</table>
+	
+	<script>
+		function setFocus(newFocus) {
+			localStorage["focusLibrary"] = newFocus;
+			if (newFocus == "snrtab") {
+				document.getElementsByTagName("body")[0].classList.add("focusright");
+			}
+			else {
+				document.getElementsByTagName("body")[0].classList.remove("focusright");
+			}
+		}
+		if (localStorage["focusLibrary"] === undefined) {
+			localStorage["focusLibrary"] = "jnrtab";
+		}
+		setFocus(localStorage["focusLibrary"]);
+	</script>
     <script>
+		// TODO: update {{ lib }}warning, {{ lib }}status, {{ lib }}remaining
         // updateAll();
-        // var autoUpdate = window.setInterval(updateAll, 3*1000);//number chosen by T3oDu1fo
-        localStorage.setItem("lib", "snr");
-        console.log("help!!!");
+        // var autoUpdate = window.setInterval(updateAll, 3*1000);//number chosen by T30Du1fo
     </script>
 {% endblock %}

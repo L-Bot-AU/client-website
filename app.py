@@ -18,15 +18,20 @@ app.secret_key = "super secret"
 bootstrap = Bootstrap(app)
 
 
-@app.route('/')
+@app.route("/")
+@app.route("/home")
 def home():
     return render_template("home.html")
 
 
-@app.route("/trends")
-def trends():
-    return render_template("trends.html")
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
+
+@app.route("/events")
+def events():
+    return render_template("events.html")
 
 @app.route("/test")
 def test():
@@ -38,6 +43,6 @@ def page_not_found(e):
     return render_template("404.html")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     #app.run()
     app.run(host="0.0.0.0", port=8000, debug=True) # this works on the school server
